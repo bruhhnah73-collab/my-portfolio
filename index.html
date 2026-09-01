@@ -114,12 +114,19 @@
     <footer>
         <p>All my projects in one place 🚀</p>
     </footer>
-<!-- 2. Interactive Click Action Toggle Logic Script -->
+    <!-- ================= CUSTOM PYTHON AI CHATBOT SYSTEM ================= -->
+    <!-- 1. The Floating Chat Bubble Button -->
+    <div id="ai-chat-bubble-button" class="ai-chat-bubble-button">
+        <span style="font-size: 28px; color: white;">💬</span>
+    </div>
+
+    <!-- 2. Interactive Click Action Trigger Logic Script -->
     <script>
         const chatBubble = document.getElementById('ai-chat-bubble-button');
 
         if (chatBubble) {
             chatBubble.addEventListener('click', function() {
+                // Instantly opens your working streaming Python model in a fresh tab!
                 window.open('https://streamlit.app', '_blank');
             });
         }
