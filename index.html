@@ -7,32 +7,46 @@
 
     <title>My Developer Portfolio</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Website Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- JavaScript -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- ================= HERO SECTION ================= -->
+
     <header class="hero">
+
         <h1>Hi, I'm Your Name 👋</h1>
-        <p>Student | AI Workflow Developer | Embedded Systems</p>
+
+        <p>
+            Student | AI Workflow Developer | Embedded Systems
+        </p>
 
         <button id="themeToggle" class="theme-btn">
             ☀️ Light Mode
         </button>
+
     </header>
 
 
-    <!-- MASTER MENU SECTION -->
+    <!-- ================= PROJECTS SECTION ================= -->
+
     <main class="portfolio-container">
 
         <h2>My Projects</h2>
 
         <div class="grid">
 
-            <!-- PROJECT 1: SCHOOL ADMIN DASHBOARD -->
+
+            <!-- ================= PROJECT 1 ================= -->
+
             <div class="card">
 
                 <h3>🏫 School Admin Dashboard-2026 (Replit)</h3>
@@ -41,16 +55,20 @@
                     A functional administrative login portal and dashboard data interface.
                 </p>
 
-                <a href="https://school-logo-admin--immadlol50.replit.app/"
-                   target="_blank"
-                   class="btn">
+                <a
+                    href="https://school-logo-admin--immadlol50.replit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
                     View Live Project ➔
                 </a>
 
             </div>
 
 
-            <!-- PROJECT 2: GYANODAYA WEBSITE -->
+            <!-- ================= PROJECT 2 ================= -->
+
             <div class="card">
 
                 <h3>🌐 School Landing Page-2026 (VSC)</h3>
@@ -59,80 +77,112 @@
                     A clean, fully responsive multi-page website built for a real school.
                 </p>
 
-                <a href="https://bruhhnah73-collab.github.io/gyanodaya-website/index.html"
-                   target="_blank"
-                   class="btn">
+                <a
+                    href="https://bruhhnah73-collab.github.io/gyanodaya-website/index.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
                     View Live Project ➔
                 </a>
 
             </div>
 
 
-            <!-- PROJECT 3: HARDWARE -->
+            <!-- ================= PROJECT 3 ================= -->
+
             <div class="card">
 
-                <h3>⚡ My first AI Chatbox -2026</h3>
+                <h3>⚡ My First AI Chatbox-2026</h3>
 
                 <p>
-                    I used the Ziper AI to build this chatbox, it give you info of 
-                    this website in specific and all the projects I've done
-            
+                    I used Ziper AI to build this chatbox. It provides information
+                    about this website specifically and all the projects I've done.
                 </p>
 
-                <a href="https://my-portfolio-a37074.zapier.app"
-                   class="btn">
+                <a
+                    href="https://my-portfolio-a37074.zapier.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
                     View Project ➔
                 </a>
 
             </div>
 
 
-            <!-- PROJECT 4 -->
+            <!-- ================= PROJECT 4 ================= -->
+
             <div class="card">
 
-                <h3>🆕  Custom Python AI Chatbot</h3>
+                <h3>🆕 Custom Python AI Chatbot</h3>
 
                 <p>
-                                        A fully custom portfolio assistant coded using Python, Streamlit, and VSC, featuring real-time response streaming.
-
+                    A fully custom portfolio assistant coded using Python,
+                    Streamlit, and VSC, featuring real-time response streaming.
                 </p>
 
-                <a href="https://my-portfolio-bot-4etzj6owfq4zopeegrepch.streamlit.app/"
-                   target="_blank"
-                   class="btn">
+                <a
+                    href="https://my-portfolio-bot-4etzj6owfq4zopeegrepch.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
                     View Live Project ➔
                 </a>
 
             </div>
+
 
         </div>
 
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
+
     <footer>
-        <p>All my projects in one place 🚀</p>
+
+        <p>
+            All my projects in one place 🚀
+        </p>
+
     </footer>
-    <!-- ================= CUSTOM PYTHON AI CHATBOT SYSTEM ================= -->
-    <!-- 1. The Floating Chat Bubble Button -->
-    <div id="ai-chat-bubble-button" class="ai-chat-bubble-button">
-        <span style="font-size: 28px; color: white;">💬</span>
+
+
+    <!-- ================= AI CHATBOT BUTTON ================= -->
+
+    <div
+        id="ai-chat-bubble-button"
+        class="ai-chat-bubble-button"
+        title="Open my AI Assistant"
+    >
+        <span>💬</span>
     </div>
 
-    <!-- 2. Interactive Click Action Trigger Logic Script -->
+
+    <!-- ================= AI CHATBOT SCRIPT ================= -->
+
     <script>
-        const chatBubble = document.getElementById('ai-chat-bubble-button');
+
+        const chatBubble =
+            document.getElementById("ai-chat-bubble-button");
 
         if (chatBubble) {
-            chatBubble.addEventListener('click', function() {
-                // Instantly opens your working streaming Python model in a fresh tab!
-                window.open('https://streamlit.app', '_blank');
+
+            chatBubble.addEventListener("click", function () {
+
+                window.open(
+                    "https://my-portfolio-bot-4etzj6owfq4zopeegrepch.streamlit.app/",
+                    "_blank"
+                );
 
             });
+
         }
+
     </script>
-    <!-- ============================================================================= -->
 
 
 </body>
