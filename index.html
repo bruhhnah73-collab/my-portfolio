@@ -10,7 +10,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Website Favicon -->
+    <!-- Website Logo / Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
 
     <!-- JavaScript -->
@@ -44,8 +44,7 @@
 
         <div class="grid">
 
-
-            <!-- ================= PROJECT 1 ================= -->
+            <!-- PROJECT 1 -->
 
             <div class="card">
 
@@ -67,7 +66,7 @@
             </div>
 
 
-            <!-- ================= PROJECT 2 ================= -->
+            <!-- PROJECT 2 -->
 
             <div class="card">
 
@@ -89,14 +88,14 @@
             </div>
 
 
-            <!-- ================= PROJECT 3 ================= -->
+            <!-- PROJECT 3 -->
 
             <div class="card">
 
                 <h3>⚡ My First AI Chatbox-2026</h3>
 
                 <p>
-                    I used Ziper AI to build this chatbox. It provides information
+                    I used Ziper AI to build this chatbox. It gives information
                     about this website specifically and all the projects I've done.
                 </p>
 
@@ -112,7 +111,7 @@
             </div>
 
 
-            <!-- ================= PROJECT 4 ================= -->
+            <!-- PROJECT 4 -->
 
             <div class="card">
 
@@ -134,7 +133,6 @@
 
             </div>
 
-
         </div>
 
     </main>
@@ -151,36 +149,96 @@
     </footer>
 
 
-    <!-- ================= AI CHATBOT BUTTON ================= -->
+    <!-- ========================================================= -->
+    <!--                  AI CHATBOT SYSTEM                       -->
+    <!-- ========================================================= -->
+
+    <!-- Floating Chat Button -->
 
     <div
         id="ai-chat-bubble-button"
         class="ai-chat-bubble-button"
-        title="Open my AI Assistant"
+        title="Open AI Assistant"
     >
         <span>💬</span>
     </div>
 
 
-    <!-- ================= AI CHATBOT SCRIPT ================= -->
+    <!-- Chat Window -->
+
+    <div
+        id="ai-chat-window"
+        class="ai-chat-window"
+    >
+
+        <!-- Chat Header -->
+
+        <div class="ai-chat-header">
+
+            <span>
+                🤖 My AI Assistant
+            </span>
+
+            <button
+                id="ai-chat-close"
+                class="ai-chat-close"
+                aria-label="Close AI Assistant"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- Streamlit Chatbot -->
+
+        <div class="ai-chat-content">
+
+            <iframe
+                src="https://my-portfolio-bot-4etzj6owfq4zopeegrepch.streamlit.app/"
+                title="My Python AI Chatbot"
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CHATBOT JAVASCRIPT ================= -->
 
     <script>
 
         const chatBubble =
             document.getElementById("ai-chat-bubble-button");
 
-        if (chatBubble) {
+        const chatWindow =
+            document.getElementById("ai-chat-window");
 
-            chatBubble.addEventListener("click", function () {
+        const chatClose =
+            document.getElementById("ai-chat-close");
 
-                window.open(
-                    "https://my-portfolio-bot-4etzj6owfq4zopeegrepch.streamlit.app/",
-                    "_blank"
-                );
 
-            });
+        /* Open chatbot */
 
-        }
+        chatBubble.addEventListener("click", function () {
+
+            chatWindow.classList.add("open");
+
+            chatBubble.style.display = "none";
+
+        });
+
+
+        /* Close chatbot */
+
+        chatClose.addEventListener("click", function () {
+
+            chatWindow.classList.remove("open");
+
+            chatBubble.style.display = "flex";
+
+        });
 
     </script>
 
