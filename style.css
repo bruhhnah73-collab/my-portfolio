@@ -158,3 +158,31 @@ body.light-mode .card p {
 body.light-mode footer {
     color: #64748b;
 }
+
+
+/* =============================================================================
+   ADDED: FLOATING CHAT BUBBLE CUSTOM STYLING
+   ============================================================================= */
+
+.ai-chat-bubble-button {
+    position: fixed; 
+    bottom: 25px; 
+    right: 25px; 
+    width: 60px; 
+    height: 60px; 
+    background-color: #0284c7; /* Matches your portfolio theme blue button! */
+    border-radius: 50%; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    z-index: 999999;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Add active hover jump interaction rule style values */
+.ai-chat-bubble-button:hover {
+    transform: scale(1.1);
+    background-color: #0369a1; /* Darkens on hover cleanly */
+}
