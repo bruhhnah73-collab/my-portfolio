@@ -56,12 +56,12 @@ document.addEventListener("DOMContentLoaded", function() {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
-            // FIXED: Full absolute URL string to send requests out to the global internet network cleanly
+            // Standard, robust text streaming request format
             const cleanQuery = encodeURIComponent(query);
             const cleanSystem = encodeURIComponent(systemInstruction);
-            const targetUrl = `https://pollinations.ai{cleanQuery}?system=${cleanSystem}`;
+            const targetUrl = `https://pollinations.ai{cleanQuery}?system=${cleanSystem}&model=openai`;
             
-            const response = await fetch(targetUrl, { method: 'GET' });
+            const response = await fetch(targetUrl);
             const responseText = await response.text();
             
             if (messagesContainer.contains(loadingBubble)) {
