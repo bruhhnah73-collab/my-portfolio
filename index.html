@@ -114,7 +114,7 @@
         <p>All my projects in one place 🚀</p>
     </footer>
 
-       <!-- ================= CUSTOM PYTHON AI CHATBOT SYSTEM ================= -->
+        <!-- ================= PREMIUM NATIVE PYTHON-STYLE AI CHATBOT ================= -->
     <!-- 1. The Floating Chat Bubble Button -->
     <div id="ai-chat-bubble-button" style="
         position: fixed; 
@@ -148,7 +148,8 @@
         box-shadow: 0 8px 30px rgba(0,0,0,0.4); 
         background-color: #1a1a1a;
         border: 1px solid #333;
-        font-family: system-ui, -apple-system, sans-serif;">
+        font-family: system-ui, -apple-system, sans-serif;
+        flex-direction: column;">
         
         <!-- Header Bar -->
         <div style="background-color: #0284c7; color: white; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 14px;">
@@ -159,45 +160,124 @@
             <span id="close-chatbot" style="cursor: pointer; font-size: 22px; padding: 0 5px; line-height: 1;">×</span>
         </div>
 
-        <!-- 3. Embedded Window Loading Your New Chatbot (Bypasses all iframe blocks!) -->
-        <iframe 
-            src="https://huggingface.co" 
-            width="100%" 
-            height="100%" 
-            style="border: none; height: calc(100% - 45px); background-color: #1a1a1a;">
-        </iframe>
+        <!-- Chat History Window Area -->
+        <div id="chat-messages-container" style="flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background-color: #0f172a;">
+            <!-- AI Welcome Bubble -->
+            <div style="align-self: flex-start; background-color: #1e293b; color: #f8fafc; padding: 10px 14px; border-radius: 12px 12px 12px 0px; max-width: 85%; font-size: 14px; border: 1px solid #334155;">
+                Hello! I am here to tell you all about the incredible websites my creator has built since childhood. What project would you like to hear about first?
+            </div>
+        </div>
+
+        <!-- Text Input Control Bar Area -->
+        <div style="padding: 12px; background-color: #1e293b; border-top: 1px solid #334155; display: flex; gap: 8px; align-items: center;">
+            <input type="text" id="chat-user-input" placeholder="Ask me about projects..." style="flex: 1; padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background-color: #0f172a; color: white; font-size: 14px; outline: none;">
+            <button id="chat-send-btn" style="background-color: #0284c7; color: white; border: none; padding: 10px 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px;">Send</button>
+        </div>
     </div>
 
-    <!-- 4. Interactive Click Action Toggle Logic Script -->
+    <!-- 3. Interactive Toggle and Direct API Engine Script -->
     <script>
         const chatBubble = document.getElementById('ai-chat-bubble-button');
         const chatModal = document.getElementById('ai-chatbot-modal');
         const closeBtn = document.getElementById('close-chatbot');
+        const sendBtn = document.getElementById('chat-send-btn');
+        const userInput = document.getElementById('chat-user-input');
+        const messagesContainer = document.getElementById('chat-messages-container');
 
+        // Bot Brain Memory Context
+        const chatHistory = [
+            {
+                role: "system",
+                content: "You are a helpful, enthusiastic, and professional AI assistant representing me to visitors. Your primary objective is to showcase my lifelong passion for coding and highlight the projects I have built since childhood. Always present work proudly and chronologically: 1. School Website on Replit, 2. Custom Website in VS Code, 3. AI Chatbot using Zapier, 4. Custom Python AI Chatbot using Groq. Keep responses concise, clear, and punchy."
+            }
+        ];
+
+        // Layout Open/Close Toggles
         if (chatBubble) {
-            chatBubble.addEventListener('mouseenter', function() {
-                chatBubble.style.transform = 'scale(1.1)';
-                chatBubble.style.backgroundColor = '#0369a1';
+            chatBubble.addEventListener('mouseenter', () => { chatBubble.style.transform = 'scale(1.1)'; });
+            chatBubble.addEventListener('mouseleave', () => { chatBubble.style.transform = 'scale(1)'; });
+            chatBubble.addEventListener('click', () => {
+                chatModal.style.display = chatModal.style.display === 'none' || chatModal.style.display === '' ? 'flex' : 'none';
             });
-            chatBubble.addEventListener('mouseleave', function() {
-                chatBubble.style.transform = 'scale(1)';
-                chatBubble.style.backgroundColor = '#0284c7';
-            });
+        }
+        if (closeBtn) closeBtn.addEventListener('click', () => { chatModal.style.display = 'none'; });
 
-            chatBubble.addEventListener('click', function() {
-                if (chatModal.style.display === 'none' || chatModal.style.display === '') {
-                    chatModal.style.display = 'block';
+        // Text Message Rendering Utility
+        function appendMessage(text, role) {
+            const bubble = document.createElement('div');
+            bubble.style.padding = '10px 14px';
+            bubble.style.borderRadius = '12px';
+            bubble.style.fontSize = '14px';
+            bubble.style.maxWidth = '85%';
+            bubble.style.lineHeight = '1.4';
+
+            if (role === 'user') {
+                bubble.style.alignSelf = 'flex-end';
+                bubble.style.backgroundColor = '#0284c7';
+                bubble.style.color = 'white';
+                bubble.style.borderRadius = '12px 12px 0px 12px';
+            } else {
+                bubble.style.alignSelf = 'flex-start';
+                bubble.style.backgroundColor = '#1e293b';
+                bubble.style.color = '#f8fafc';
+                bubble.style.borderRadius = '12px 12px 12px 0px';
+                bubble.style.border = '1px solid #334155';
+            }
+            bubble.innerText = text;
+            messagesContainer.appendChild(bubble);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Action Trigger Logic Handler
+        async function handleSendMessage() {
+            const query = userInput.value.trim();
+            if (!query) return;
+
+            appendMessage(query, 'user');
+            userInput.value = '';
+            chatHistory.push({ role: "user", content: query });
+
+            // Create placeholder loading bubble
+            const loadingBubble = document.createElement('div');
+            loadingBubble.style.alignSelf = 'flex-start';
+            loadingBubble.style.backgroundColor = '#1e293b';
+            bubble.style.color = '#94a3b8';
+            loadingBubble.style.padding = '10px 14px';
+            loadingBubble.style.borderRadius = '12px 12px 12px 0px';
+            loadingBubble.style.fontSize = '14px';
+            loadingBubble.innerText = 'Typing...';
+            messagesContainer.appendChild(loadingBubble);
+
+            try {
+                const response = await fetch('https://groq.com', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer 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',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: "llama-3.3-70b-specdec",
+                        messages: chatHistory
+                    })
+                });
+                const data = await response.json();
+                messagesContainer.removeChild(loadingBubble);
+
+                if (data.choices && data.choices[0].message.content) {
+                    const reply = data.choices[0].message.content;
+                    appendMessage(reply, 'assistant');
+                    chatHistory.push({ role: "assistant", content: reply });
                 } else {
-                    chatModal.style.display = 'none';
+                    appendMessage("Sorry, I had trouble parsing the data loop response.", 'assistant');
                 }
-            });
+            } catch (err) {
+                messagesContainer.removeChild(loadingBubble);
+                appendMessage("Network connection trace interrupted.", 'assistant');
+            }
         }
 
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                chatModal.style.display = 'none';
-            });
-        }
+        sendBtn.addEventListener('click', handleSendMessage);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
     </script>
     <!-- ============================================================================= -->
 
