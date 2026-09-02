@@ -161,16 +161,17 @@ body.light-mode footer {
 
 
 /* =============================================================================
-   ADDED: FLOATING CHAT BUBBLE CUSTOM STYLING
+   PORTFOLIO NATIVE PREMIUM CHAT SYSTEM STYLES
    ============================================================================= */
 
+/* Floating chat button setup */
 .ai-chat-bubble-button {
     position: fixed; 
     bottom: 25px; 
     right: 25px; 
     width: 60px; 
     height: 60px; 
-    background-color: #0284c7; /* Matches your portfolio theme blue button! */
+    background-color: #0284c7; 
     border-radius: 50%; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
     display: flex; 
@@ -181,100 +182,134 @@ body.light-mode footer {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* Add active hover jump interaction rule style values */
+.ai-chat-bubble-button span {
+    font-size: 28px; 
+    color: white;
+}
+
 .ai-chat-bubble-button:hover {
     transform: scale(1.1);
-    background-color: #0369a1; /* Darkens on hover cleanly */
-}
-/* =========================
-   AI CHAT WINDOW
-   ========================= */
-
-.ai-chat-window {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-
-    width: 400px;
-    height: 600px;
-
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-
-    z-index: 999998;
-
-    display: none;
+    background-color: #0369a1;
 }
 
-.ai-chat-window.open {
-    display: block;
+/* Chatbox modal structure overlay box placement */
+.ai-chatbot-modal {
+    display: none; 
+    position: fixed; 
+    bottom: 95px; 
+    right: 25px; 
+    width: 380px; 
+    height: 550px; 
+    z-index: 999999; 
+    border-radius: 16px; 
+    overflow: hidden; 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4); 
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    font-family: system-ui, -apple-system, sans-serif;
+    flex-direction: column;
 }
 
-
-/* Chat Header */
-
-.ai-chat-header {
-    height: 55px;
-
-    background-color: #0284c7;
-    color: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 15px;
-
-    font-weight: bold;
+.chat-header {
+    background-color: #0284c7; 
+    color: white; 
+    padding: 14px 16px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    font-weight: bold; 
+    font-size: 14px;
 }
 
+.chat-header-title {
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+}
 
-/* Close Button */
-
-.ai-chat-close {
-    border: none;
-    background: transparent;
-
-    color: white;
-
-    font-size: 28px;
-
-    cursor: pointer;
-
+.chat-close-btn {
+    cursor: pointer; 
+    font-size: 22px; 
+    padding: 0 5px; 
     line-height: 1;
 }
 
-
-/* Chat Content */
-
-.ai-chat-content {
-    width: 100%;
-    height: calc(100% - 55px);
+.chat-messages-container {
+    flex: 1; 
+    padding: 16px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    background-color: #0f172a;
 }
 
-.ai-chat-content iframe {
-    width: 100%;
-    height: 100%;
-
-    border: none;
+/* Custom styled chat messages bubbles layout orientation */
+.chat-bubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    max-width: 85%;
+    line-height: 1.4;
 }
 
+.assistant-bubble {
+    align-self: flex-start; 
+    background-color: #1e293b; 
+    color: #f8fafc; 
+    border-radius: 12px 12px 12px 0px; 
+    border: 1px solid #334155;
+}
 
-/* Mobile */
+.user-bubble {
+    align-self: flex-end; 
+    background-color: #0284c7; 
+    color: white; 
+    border-radius: 12px 12px 0px 12px;
+}
 
+.chat-input-bar {
+    padding: 12px; 
+    background-color: #1e293b; 
+    border-top: 1px solid #334155; 
+    display: flex; 
+    gap: 8px; 
+    align-items: center;
+}
+
+.chat-input-bar input {
+    flex: 1; 
+    padding: 10px 14px; 
+    border-radius: 8px; 
+    border: 1px solid #334155; 
+    background-color: #0f172a; 
+    color: white; 
+    font-size: 14px; 
+    outline: none;
+}
+
+.chat-input-bar button {
+    background-color: #0284c7; 
+    color: white; 
+    border: none; 
+    padding: 10px 14px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.chat-input-bar button:hover {
+    background-color: #0369a1;
+}
+
+/* Responsive mobile view sizing rules */
 @media (max-width: 500px) {
-
-    .ai-chat-window {
+    .ai-chatbot-modal {
         bottom: 10px;
         right: 10px;
-
         width: calc(100% - 20px);
         height: 80vh;
     }
-
 }
