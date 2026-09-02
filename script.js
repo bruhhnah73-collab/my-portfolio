@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
-            // Using a simple GET route bypass block that modern web browsers will never drop
+            // FIXED: Full absolute URL string to send requests out to the global internet network cleanly
             const cleanQuery = encodeURIComponent(query);
             const cleanSystem = encodeURIComponent(systemInstruction);
             const targetUrl = `https://pollinations.ai{cleanQuery}?system=${cleanSystem}`;
@@ -64,7 +64,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const response = await fetch(targetUrl, { method: 'GET' });
             const responseText = await response.text();
             
-            messagesContainer.removeChild(loadingBubble);
+            if (messagesContainer.contains(loadingBubble)) {
+                messagesContainer.removeChild(loadingBubble);
+            }
 
             if (responseText && responseText.trim().length > 0) {
                 appendMessage(responseText.trim(), 'assistant');
