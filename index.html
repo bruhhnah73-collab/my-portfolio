@@ -117,82 +117,49 @@
 
     <!-- ================= CUSTOM PYTHON AI CHATBOT SYSTEM ================= -->
 
-    <!-- Floating Chat Bubble Button -->
-    <div id="ai-chat-bubble-button" class="ai-chat-bubble-button">
-
-        <span style="font-size: 28px; color: white;">
-            💬
-        </span>
-
-    </div>
-
-
-    <!-- ================= CUSTOM PYTHON AI CHATBOT SYSTEM ================= -->
+     <!-- ================= CUSTOM PYTHON AI CHATBOT SYSTEM ================= -->
     <!-- 1. The Floating Chat Bubble Button -->
-    <div id="ai-chat-bubble-button" class="ai-chat-bubble-button">
+    <div id="ai-chat-bubble-button" style="
+        position: fixed; 
+        bottom: 25px; 
+        right: 25px; 
+        width: 60px; 
+        height: 60px; 
+        background-color: #0284c7; 
+        border-radius: 50%; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        cursor: pointer; 
+        z-index: 999999;
+        transition: transform 0.2s ease;">
         <span style="font-size: 28px; color: white;">💬</span>
     </div>
 
-    <!-- 2. The Chatbot Modal Window Popup Box (Initially Hidden) -->
-    <div id="ai-chatbot-modal" style="
-        display: none; 
-        position: fixed; 
-        bottom: 95px; 
-        right: 25px; 
-        width: 380px; 
-        height: 550px; 
-        z-index: 999999; 
-        border-radius: 16px; 
-        overflow: hidden; 
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4); 
-        background-color: #1a1a1a;
-        border: 1px solid #333;
-        font-family: system-ui, -apple-system, sans-serif;">
-        
-        <!-- Header Bar -->
-        <div style="background-color: #0b5ed7; color: white; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 14px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <span>💻</span>
-                <span>Portfolio AI Assistant</span>
-            </div>
-            <span id="close-chatbot" style="cursor: pointer; font-size: 22px; padding: 0 5px; line-height: 1;">×</span>
-        </div>
-
-        <!-- 3. Embedded Window Loading Your Live App -->
-        <iframe 
-            src="https://streamlit.app" 
-            width="100%" 
-            height="100%" 
-            style="border: none; height: calc(100% - 45px); background-color: #0e1117;">
-        </iframe>
-    </div>
-
-    <!-- 4. Interactive Click Action Toggle Logic Script -->
+    <!-- 2. Interactive Click Action Trigger Logic Script -->
     <script>
         const chatBubble = document.getElementById('ai-chat-bubble-button');
-        const chatModal = document.getElementById('ai-chatbot-modal');
-        const closeBtn = document.getElementById('close-chatbot');
 
         if (chatBubble) {
-            chatBubble.addEventListener('click', function() {
-                if (chatModal.style.display === 'none' || chatModal.style.display === '') {
-                    chatModal.style.display = 'block';
-                    chatBubble.style.transform = 'scale(0.9)';
-                } else {
-                    chatModal.style.display = 'none';
-                    chatBubble.style.transform = 'scale(1)';
-                }
+            // Hover effect right in the code
+            chatBubble.addEventListener('mouseenter', function() {
+                chatBubble.style.transform = 'scale(1.1)';
+                chatBubble.style.backgroundColor = '#0369a1';
             });
-        }
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                chatModal.style.display = 'none';
+            chatBubble.addEventListener('mouseleave', function() {
                 chatBubble.style.transform = 'scale(1)';
+                chatBubble.style.backgroundColor = '#0284c7';
+            });
+
+            // Click action to open your bot
+            chatBubble.addEventListener('click', function() {
+                window.open('https://my-portfolio-bot-4etzj6owfq4zopeegrepch.streamlit.app/', '_blank');
             });
         }
     </script>
     <!-- ============================================================================= -->
+
 
 </body>
 
