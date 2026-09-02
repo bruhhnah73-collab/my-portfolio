@@ -113,8 +113,7 @@
     <footer>
         <p>All my projects in one place 🚀</p>
     </footer>
-
-        <!-- ================= PREMIUM NATIVE PYTHON-STYLE AI CHATBOT ================= -->
+    <!-- ================= PREMIUM NATIVE PYTHON-STYLE AI CHATBOT ================= -->
     <!-- 1. The Floating Chat Bubble Button -->
     <div id="ai-chat-bubble-button" style="
         position: fixed; 
@@ -188,7 +187,7 @@
         const chatHistory = [
             {
                 role: "system",
-                content: "You are a helpful, enthusiastic, and professional AI assistant representing me to visitors. Your primary objective is to showcase my lifelong passion for coding and highlight the projects I have built since childhood. Always present work proudly and chronologically: 1. School Website on Replit, 2. Custom Website in VS Code, 3. AI Chatbot using Zapier, 4. Custom Python AI Chatbot using Groq. Keep responses concise, clear, and punchy."
+                content: "You are a helpful, enthusiastic, and professional AI assistant representing me to visitors. Your primary objective is to showcase my lifelong passion for coding and highlight the projects I have built since childhood. Always present work proudly and chronologically: 1. School Website on Replit, 2. School Landing Page in VS Code, 3. AI Chatbot using Zapier, 4. Custom Python AI Chatbot using Groq. Keep responses concise, clear, and punchy."
             }
         ];
 
@@ -241,7 +240,7 @@
             const loadingBubble = document.createElement('div');
             loadingBubble.style.alignSelf = 'flex-start';
             loadingBubble.style.backgroundColor = '#1e293b';
-            bubble.style.color = '#94a3b8';
+            loadingBubble.style.color = '#94a3b8';
             loadingBubble.style.padding = '10px 14px';
             loadingBubble.style.borderRadius = '12px 12px 12px 0px';
             loadingBubble.style.fontSize = '14px';
@@ -268,10 +267,12 @@
                     appendMessage(reply, 'assistant');
                     chatHistory.push({ role: "assistant", content: reply });
                 } else {
-                    appendMessage("Sorry, I had trouble parsing the data loop response.", 'assistant');
+                    appendMessage("Sorry, I had trouble parsing the response.", 'assistant');
                 }
             } catch (err) {
-                messagesContainer.removeChild(loadingBubble);
+                if (messagesContainer.contains(loadingBubble)) {
+                    messagesContainer.removeChild(loadingBubble);
+                }
                 appendMessage("Network connection trace interrupted.", 'assistant');
             }
         }
@@ -280,6 +281,7 @@
         userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSendMessage(); });
     </script>
     <!-- ============================================================================= -->
+
 
 
 
