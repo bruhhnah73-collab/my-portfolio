@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function() {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
-            // Standard, robust text streaming request format
-            const cleanQuery = encodeURIComponent(query);
-            const cleanSystem = encodeURIComponent(systemInstruction);
-            const targetUrl = `https://pollinations.ai{cleanQuery}?system=${cleanSystem}&model=openai`;
+            // FIXED: Using standard string addition to force an absolute internet URL route
+            var cleanQuery = encodeURIComponent(query);
+            var cleanSystem = encodeURIComponent(systemInstruction);
+            var targetUrl = "https://pollinations.ai" + cleanQuery + "?system=" + cleanSystem + "&model=openai";
             
             const response = await fetch(targetUrl);
             const responseText = await response.text();
