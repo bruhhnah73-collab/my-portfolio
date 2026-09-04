@@ -22,7 +22,7 @@ const sendButton = document.getElementById("chat-send-btn");
 const messagesContainer = document.getElementById("chat-messages-container");
 
 // Your deployed FastAPI backend
-const API_URL = "https://my-portfolio-bot-test.onrender.com";
+const API_URL = "https://my-portfolio-bot-test.onrender.com/chat";
 
 // Open chatbot
 chatBubble.addEventListener("click", function () {
