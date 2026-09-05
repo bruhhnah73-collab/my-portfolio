@@ -282,3 +282,33 @@ body.light-mode footer {
         height: 80vh;
     }
 }
+/* =========================
+   AI EMAIL ASSISTANT BUTTON
+   ========================= */
+
+.second-floating-button {
+    position: fixed;
+    bottom: 25px;
+    right: 100px;
+    width: 60px;
+    height: 60px;
+    background-color: #0284c7;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999999;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.second-floating-button:hover {
+    transform: scale(1.1);
+    background-color: #0369a1;
+}
+
+.second-floating-button span {
+    font-size: 28px;
+    color: white;
+}
