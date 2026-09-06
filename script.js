@@ -10,12 +10,15 @@ const chatMessagesContainer = document.getElementById("chat-messages-container")
 const chatUserInput = document.getElementById("chat-user-input");
 const chatSendButton = document.getElementById("chat-send-btn");
 
+const emailAssistantButton = document.getElementById("email-assistant-button");
+
 
 // =========================
 // THEME TOGGLE
 // =========================
 
 themeToggle.addEventListener("click", () => {
+
     document.body.classList.toggle("light-mode");
 
     if (document.body.classList.contains("light-mode")) {
@@ -23,25 +26,31 @@ themeToggle.addEventListener("click", () => {
     } else {
         themeToggle.textContent = "☀️ Light Mode";
     }
+
 });
 
 
 // =========================
-// OPEN CHATBOT
+// OPEN PORTFOLIO CHATBOT
 // =========================
 
 chatBubbleButton.addEventListener("click", () => {
+
     chatbotModal.classList.add("active");
+
     chatUserInput.focus();
+
 });
 
 
 // =========================
-// CLOSE CHATBOT
+// CLOSE PORTFOLIO CHATBOT
 // =========================
 
 closeChatbot.addEventListener("click", () => {
+
     chatbotModal.classList.remove("active");
+
 });
 
 
@@ -57,21 +66,34 @@ async function sendMessage() {
         return;
     }
 
+
     // Show user's message
+
     addMessage(message, "user");
 
+
     // Clear input
+
     chatUserInput.value = "";
 
-    // Disable button while AI is responding
+
+    // Disable button while AI responds
+
     chatSendButton.disabled = true;
 
-    // Temporary thinking message
-    const thinkingMessage = addMessage("Thinking...", "assistant");
+
+    // Show thinking message
+
+    const thinkingMessage = addMessage(
+        "Thinking...",
+        "assistant"
+    );
+
 
     try {
 
         const response = await fetch(`${API_URL}/chat`, {
+
             method: "POST",
 
             headers: {
@@ -81,19 +103,30 @@ async function sendMessage() {
             body: JSON.stringify({
                 message: message
             })
+
         });
+
 
         if (!response.ok) {
             throw new Error("Backend request failed.");
         }
 
+
         const data = await response.json();
 
-        // Remove "Thinking..."
+
+        // Remove thinking message
+
         thinkingMessage.remove();
 
+
         // Show AI response
-        addMessage(data.response, "assistant");
+
+        addMessage(
+            data.response,
+            "assistant"
+        );
+
 
     } catch (error) {
 
@@ -109,9 +142,11 @@ async function sendMessage() {
     } finally {
 
         chatSendButton.disabled = false;
+
         chatUserInput.focus();
 
     }
+
 }
 
 
@@ -130,14 +165,21 @@ function addMessage(message, sender) {
             : "assistant-bubble"
     );
 
+
     messageBubble.textContent = message;
 
-    chatMessagesContainer.appendChild(messageBubble);
+
+    chatMessagesContainer.appendChild(
+        messageBubble
+    );
+
 
     chatMessagesContainer.scrollTop =
         chatMessagesContainer.scrollHeight;
 
+
     return messageBubble;
+
 }
 
 
@@ -145,21 +187,47 @@ function addMessage(message, sender) {
 // SEND BUTTON
 // =========================
 
-chatSendButton.addEventListener("click", sendMessage);
+chatSendButton.addEventListener(
+    "click",
+    sendMessage
+);
 
 
 // =========================
 // ENTER KEY
 // =========================
 
-chatUserInput.addEventListener("keydown", (event) => {
+chatUserInput.addEventListener(
+    "keydown",
+    (event) => {
 
-    if (event.key === "Enter" && !event.shiftKey) {
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        sendMessage();
+            sendMessage();
+
+        }
 
     }
+);
 
-});
+
+// =========================
+// AI EMAIL ASSISTANT
+// =========================
+
+emailAssistantButton.addEventListener(
+    "click",
+    () => {
+
+        window.open(
+            "https://email-agent-panel.onrender.com/",
+            "_blank"
+        );
+
+    }
+);
