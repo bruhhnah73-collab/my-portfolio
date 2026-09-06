@@ -449,3 +449,110 @@ body.light-mode footer {
   border-radius: 6px;
   border: 1px solid #3f3f46;
 }
+/* ===================================================
+   AUTOMATION ENGINE PIPELINE FLOWCHART SYSTEM STYLES
+   =================================================== */
+
+.pipeline-flow-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+    gap: 5px;
+}
+
+.node-box {
+    flex: 1;
+    background: #1e293b;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 11px;
+    border: 1px solid #334155;
+}
+
+.node-box strong {
+    display: block;
+    color: #38bdf8;
+    margin: 2px 0;
+    font-size: 11px;
+}
+
+.node-box p {
+    font-size: 10px;
+    color: #94a3b8;
+    margin: 0 !important;
+}
+
+.green-node { border-top: 2px solid #22c55e; }
+.blue-node { border-top: 2px solid #3b82f6; }
+
+.pipeline-arrow {
+    color: #64748b;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.tech-stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.tech-stack-pills span {
+    background: #0f172a;
+    color: #94a3b8;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+}
+
+.badge-live {
+    display: inline-block;
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* ===================================================
+   LIGHT MODE RULES FOR AUTOMATION CARD SUB-ELEMENTS
+   =================================================== */
+
+body.light-mode .pipeline-flow-wrapper {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .node-box {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+body.light-mode .node-box strong {
+    color: #0284c7;
+}
+
+body.light-mode .node-box p {
+    color: #475569;
+}
+
+body.light-mode .pipeline-arrow {
+    color: #94a3b8;
+}
+
+body.light-mode .tech-stack-pills span {
+    background-color: #f1f5f9;
+    color: #475569;
+    border-color: #cbd5e1;
+}
