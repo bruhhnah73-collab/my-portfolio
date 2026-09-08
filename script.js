@@ -3,7 +3,7 @@ const API_URL = "https://my-portfolio-bot-test.onrender.com";
 const themeToggle = document.getElementById("themeToggle");
 const devMode = document.getElementById("devMode");
 devMode.addEventListener("click", () => {
-    alert("Developer Mode activated!");
+    document.body.classList.add("developer-mode");
 });
 
 const chatBubbleButton = document.getElementById("ai-chat-bubble-button");
