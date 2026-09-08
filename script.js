@@ -269,7 +269,7 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("AI Chatbot      🟢 CONNECTED");
         addTerminalLine("Email Assistant 🟢 ONLINE");
         addTerminalLine("Developer Mode  🟢 ACTIVE");
-        addTerminalLine("Projects        6");
+        addTerminalLine("Projects        7");
         addTerminalLine("AI Systems      2+");
 
     }
@@ -389,7 +389,7 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("║ Portfolio       🟢 ONLINE     ║");
         addTerminalLine("║ AI Chatbot      🟢 ONLINE     ║");
         addTerminalLine("║ Email Agent     🟢 ONLINE     ║");
-        addTerminalLine("║ Projects        06            ║");
+        addTerminalLine("║ Projects        07            ║");
         addTerminalLine("║ Developer Mode  🟢 ACTIVE     ║");
         addTerminalLine("╚══════════════════════════════╝");
         addTerminalLine("");
