@@ -78,6 +78,10 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("help - Show available commands");
         addTerminalLine("projects - Show my projects");
         addTerminalLine("about - About BRUHH");
+        addTerminalLine("skills - Show my skills");
+        addTerminalLine("stack - Show my tech stack");
+        addTerminalLine("whoami - Show developer profile");
+        addTerminalLine("time - Show current time");
         addTerminalLine("status - Show developer status");
         addTerminalLine("clear - Clear terminal");
 
@@ -113,6 +117,54 @@ terminalInput.addEventListener("keydown", (event) => {
 
     }
 
+    // =========================
+    // EXTRA DEVELOPER COMMANDS
+    // =========================
+
+    else if (command === "skills") {
+
+        addTerminalLine("🧠 Skills:");
+        addTerminalLine("🐍 Python");
+        addTerminalLine("🌐 HTML / CSS / JavaScript");
+        addTerminalLine("⚡ FastAPI");
+        addTerminalLine("🤖 AI Integration");
+        addTerminalLine("🔗 APIs");
+        addTerminalLine("⚙️ Automation");
+
+    }
+
+    else if (command === "stack") {
+
+        addTerminalLine("🛠️ Tech Stack:");
+        addTerminalLine("Python");
+        addTerminalLine("JavaScript");
+        addTerminalLine("HTML / CSS");
+        addTerminalLine("FastAPI");
+        addTerminalLine("Groq");
+        addTerminalLine("OpenRouter");
+        addTerminalLine("Make.com");
+        addTerminalLine("Zapier");
+        addTerminalLine("GitHub");
+
+    }
+
+    else if (command === "whoami") {
+
+        addTerminalLine("👤 BRUHH");
+        addTerminalLine("🎓 Student Developer");
+        addTerminalLine("🤖 AI Builder");
+        addTerminalLine("🌐 Web Developer");
+        addTerminalLine("⚡ Tech Explorer");
+
+    }
+
+    else if (command === "time") {
+
+        const currentTime = new Date().toLocaleTimeString();
+
+        addTerminalLine(`🕒 Current time: ${currentTime}`);
+
+    }
 
     // =========================
     // COMMAND: STATUS
