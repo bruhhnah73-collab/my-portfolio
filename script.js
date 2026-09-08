@@ -2,9 +2,181 @@ const API_URL = "https://my-portfolio-bot-test.onrender.com";
 
 const themeToggle = document.getElementById("themeToggle");
 const devMode = document.getElementById("devMode");
+
+const developerTerminal = document.getElementById("developerTerminal");
+const closeTerminal = document.getElementById("closeTerminal");
+const terminalInput = document.getElementById("terminalInput");
+const terminalOutput = document.getElementById("terminalOutput");
+
+
+// =========================
+// DEVELOPER MODE
+// =========================
+
 devMode.addEventListener("click", () => {
+
+    developerTerminal.classList.add("active");
+
     document.body.classList.add("developer-mode");
+
+    terminalInput.focus();
+
 });
+
+
+// =========================
+// CLOSE DEVELOPER TERMINAL
+// =========================
+
+closeTerminal.addEventListener("click", () => {
+
+    developerTerminal.classList.remove("active");
+
+    document.body.classList.remove("developer-mode");
+
+});
+
+
+// =========================
+// TERMINAL COMMANDS
+// =========================
+
+terminalInput.addEventListener("keydown", (event) => {
+
+    if (event.key !== "Enter") {
+        return;
+    }
+
+    const command = terminalInput.value.trim().toLowerCase();
+
+    if (!command) {
+        return;
+    }
+
+
+    // Show entered command
+
+    const commandLine = document.createElement("p");
+
+    commandLine.innerHTML = `&gt; ${command}`;
+
+    terminalOutput.appendChild(commandLine);
+
+
+    // Clear input
+
+    terminalInput.value = "";
+
+
+    // =========================
+    // COMMAND: HELP
+    // =========================
+
+    if (command === "help") {
+
+        addTerminalLine("Available commands:");
+        addTerminalLine("help - Show available commands");
+        addTerminalLine("projects - Show my projects");
+        addTerminalLine("about - About BRUHH");
+        addTerminalLine("status - Show developer status");
+        addTerminalLine("clear - Clear terminal");
+
+    }
+
+
+    // =========================
+    // COMMAND: PROJECTS
+    // =========================
+
+    else if (command === "projects") {
+
+        addTerminalLine("📁 Projects:");
+        addTerminalLine("🏫 School Admin Dashboard");
+        addTerminalLine("🌐 Gyanodaya School Website");
+        addTerminalLine("💬 Portfolio AI Chatbot");
+        addTerminalLine("🤖 Custom Python AI Chatbot");
+        addTerminalLine("📬 AI Email Assistant");
+        addTerminalLine("☁️ Autonomous AI Social Media Pipeline");
+
+    }
+
+
+    // =========================
+    // COMMAND: ABOUT
+    // =========================
+
+    else if (command === "about") {
+
+        addTerminalLine("BRUHH");
+        addTerminalLine("Student | AI Builder | Web Developer | Tech Explorer");
+        addTerminalLine("Currently experimenting with AI, automation, APIs and web development.");
+
+    }
+
+
+    // =========================
+    // COMMAND: STATUS
+    // =========================
+
+    else if (command === "status") {
+
+        addTerminalLine("🟢 Developer Mode: ACTIVE");
+        addTerminalLine("🟢 Portfolio: ONLINE");
+        addTerminalLine("🟢 AI Chatbot: CONNECTED");
+        addTerminalLine("🟢 Email Assistant: ONLINE");
+
+    }
+
+
+    // =========================
+    // COMMAND: CLEAR
+    // =========================
+
+    else if (command === "clear") {
+
+        terminalOutput.innerHTML = "";
+
+    }
+
+
+    // =========================
+    // UNKNOWN COMMAND
+    // =========================
+
+    else {
+
+        addTerminalLine(
+            `❌ Unknown command: ${command}`
+        );
+
+        addTerminalLine(
+            "Type 'help' to see available commands."
+        );
+
+    }
+
+
+    // Scroll terminal down
+
+    terminalOutput.scrollTop =
+        terminalOutput.scrollHeight;
+
+});
+
+
+// =========================
+// TERMINAL OUTPUT HELPER
+// =========================
+
+function addTerminalLine(text) {
+
+    const line = document.createElement("p");
+
+    line.textContent = text;
+
+    terminalOutput.appendChild(line);
+
+}
 
 const chatBubbleButton = document.getElementById("ai-chat-bubble-button");
 const chatbotModal = document.getElementById("ai-chatbot-modal");
