@@ -19,10 +19,41 @@ devMode.addEventListener("click", () => {
 
     document.body.classList.add("developer-mode");
 
-    terminalInput.focus();
+    terminalOutput.innerHTML = "";
+
+    const bootLines = [
+        "BRUHH Developer Terminal v1.0",
+        "",
+        "Initializing developer environment...",
+        "Loading portfolio........ OK",
+        "Loading projects......... OK",
+        "Loading AI systems....... OK",
+        "Loading automation....... OK",
+        "",
+        "🟢 SYSTEM ONLINE",
+        "",
+        "Type 'help' to see available commands."
+    ];
+
+    let index = 0;
+
+    function showBootLine() {
+
+        if (index >= bootLines.length) {
+            terminalInput.focus();
+            return;
+        }
+
+        addTerminalLine(bootLines[index]);
+
+        index++;
+
+        setTimeout(showBootLine, 180);
+    }
+
+    showBootLine();
 
 });
-
 
 // =========================
 // CLOSE DEVELOPER TERMINAL
