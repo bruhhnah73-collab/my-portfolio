@@ -171,9 +171,11 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("[4] 🤖 Custom Python AI Chatbot");
         addTerminalLine("[5] 📬 AI Email Assistant");
         addTerminalLine("[6] ☁️ Autonomous AI Social Media Pipeline");
+        addTerminalLine("[7] 🚀 Project Showcase");
+
 
         addTerminalLine("────────────────────────");
-        addTerminalLine("Total projects: 6");
+        addTerminalLine("Total projects: 7");
 
     }
 
