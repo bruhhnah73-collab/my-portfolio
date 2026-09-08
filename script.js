@@ -114,6 +114,9 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("whoami - Show developer profile");
         addTerminalLine("time - Show current time");
         addTerminalLine("status - Show developer status");
+        addTerminalLine("open projects - Open projects section");
+        addTerminalLine("open chatbot - Open AI chatbot");
+        addTerminalLine("open email - Open AI Email Assistant");
         addTerminalLine("clear - Clear terminal");
 
     }
@@ -196,7 +199,42 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine(`🕒 Current time: ${currentTime}`);
 
     }
+// =========================
+// OPEN COMMANDS
+// =========================
 
+else if (command === "open projects") {
+
+    addTerminalLine("📁 Opening projects...");
+
+    document.querySelector(".portfolio-container")
+        .scrollIntoView({ behavior: "smooth" });
+
+}
+
+else if (command === "open chatbot") {
+
+    addTerminalLine("💬 Opening Portfolio AI Chatbot...");
+
+    developerTerminal.classList.remove("active");
+    document.body.classList.remove("developer-mode");
+
+    chatbotModal.classList.add("active");
+
+    chatUserInput.focus();
+
+}
+
+else if (command === "open email") {
+
+    addTerminalLine("📬 Opening AI Email Assistant...");
+
+    window.open(
+        "https://email-agent-panel.onrender.com/",
+        "_blank"
+    );
+
+}
     // =========================
     // COMMAND: STATUS
     // =========================
