@@ -22,13 +22,14 @@ devMode.addEventListener("click", () => {
     terminalOutput.innerHTML = "";
 
     const bootLines = [
-        "BRUHH Developer Terminal v1.0",
+        "BRUHH Developer Terminal v2.0",
         "",
         "Initializing developer environment...",
         "Loading portfolio........ OK",
         "Loading projects......... OK",
         "Loading AI systems....... OK",
         "Loading automation....... OK",
+        "Loading developer tools.. OK",
         "",
         "🟢 SYSTEM ONLINE",
         "",
@@ -48,12 +49,13 @@ devMode.addEventListener("click", () => {
 
         index++;
 
-        setTimeout(showBootLine, 180);
+        setTimeout(showBootLine, 150);
     }
 
     showBootLine();
 
 });
+
 
 // =========================
 // CLOSE DEVELOPER TERMINAL
@@ -78,18 +80,37 @@ terminalInput.addEventListener("keydown", (event) => {
         return;
     }
 
-    const command = terminalInput.value.trim().toLowerCase();
+    let command = terminalInput.value.trim().toLowerCase();
 
     if (!command) {
         return;
     }
 
 
-    // Show entered command
+    // =========================
+    // COMMAND ALIASES
+    // =========================
+
+    if (command === "cls") {
+        command = "clear";
+    }
+
+    if (command === "ls") {
+        command = "projects";
+    }
+
+    if (command === "dir") {
+        command = "projects";
+    }
+
+
+    // =========================
+    // SHOW ENTERED COMMAND
+    // =========================
 
     const commandLine = document.createElement("p");
 
-    commandLine.innerHTML = `&gt; ${command}`;
+    commandLine.textContent = `> ${command}`;
 
     terminalOutput.appendChild(commandLine);
 
@@ -106,17 +127,30 @@ terminalInput.addEventListener("keydown", (event) => {
     if (command === "help") {
 
         addTerminalLine("Available commands:");
+        addTerminalLine("");
         addTerminalLine("help - Show available commands");
         addTerminalLine("projects - Show my projects");
         addTerminalLine("about - About BRUHH");
         addTerminalLine("skills - Show my skills");
         addTerminalLine("stack - Show my tech stack");
         addTerminalLine("whoami - Show developer profile");
+        addTerminalLine("info - Show system overview");
+        addTerminalLine("system - Show browser information");
         addTerminalLine("time - Show current time");
-        addTerminalLine("status - Show developer status");
+        addTerminalLine("date - Show current date");
+        addTerminalLine("uptime - Show portfolio uptime");
+        addTerminalLine("contact - Show contact information");
+        addTerminalLine("banner - Show developer banner");
+        addTerminalLine("dashboard - Show developer dashboard");
+        addTerminalLine("");
         addTerminalLine("open projects - Open projects section");
         addTerminalLine("open chatbot - Open AI chatbot");
         addTerminalLine("open email - Open AI Email Assistant");
+        addTerminalLine("open portfolio - Close terminal");
+        addTerminalLine("");
+        addTerminalLine("theme dark - Switch to dark mode");
+        addTerminalLine("theme light - Switch to light mode");
+        addTerminalLine("");
         addTerminalLine("clear - Clear terminal");
 
     }
@@ -128,13 +162,18 @@ terminalInput.addEventListener("keydown", (event) => {
 
     else if (command === "projects") {
 
-        addTerminalLine("📁 Projects:");
-        addTerminalLine("🏫 School Admin Dashboard");
-        addTerminalLine("🌐 Gyanodaya School Website");
-        addTerminalLine("💬 Portfolio AI Chatbot");
-        addTerminalLine("🤖 Custom Python AI Chatbot");
-        addTerminalLine("📬 AI Email Assistant");
-        addTerminalLine("☁️ Autonomous AI Social Media Pipeline");
+        addTerminalLine("📁 PROJECTS");
+        addTerminalLine("────────────────────────");
+
+        addTerminalLine("[1] 🏫 School Admin Dashboard");
+        addTerminalLine("[2] 🌐 Gyanodaya School Website");
+        addTerminalLine("[3] 💬 Portfolio AI Chatbot");
+        addTerminalLine("[4] 🤖 Custom Python AI Chatbot");
+        addTerminalLine("[5] 📬 AI Email Assistant");
+        addTerminalLine("[6] ☁️ Autonomous AI Social Media Pipeline");
+
+        addTerminalLine("────────────────────────");
+        addTerminalLine("Total projects: 6");
 
     }
 
@@ -146,18 +185,27 @@ terminalInput.addEventListener("keydown", (event) => {
     else if (command === "about") {
 
         addTerminalLine("BRUHH");
-        addTerminalLine("Student | AI Builder | Web Developer | Tech Explorer");
-        addTerminalLine("Currently experimenting with AI, automation, APIs and web development.");
+        addTerminalLine("");
+        addTerminalLine(
+            "Student | AI Builder | Web Developer | Tech Explorer"
+        );
+        addTerminalLine("");
+        addTerminalLine(
+            "Currently experimenting with AI, automation, APIs and web development."
+        );
 
     }
 
+
     // =========================
-    // EXTRA DEVELOPER COMMANDS
+    // COMMAND: SKILLS
     // =========================
 
     else if (command === "skills") {
 
-        addTerminalLine("🧠 Skills:");
+        addTerminalLine("🧠 SKILLS");
+        addTerminalLine("────────────────────────");
+
         addTerminalLine("🐍 Python");
         addTerminalLine("🌐 HTML / CSS / JavaScript");
         addTerminalLine("⚡ FastAPI");
@@ -167,9 +215,16 @@ terminalInput.addEventListener("keydown", (event) => {
 
     }
 
+
+    // =========================
+    // COMMAND: STACK
+    // =========================
+
     else if (command === "stack") {
 
-        addTerminalLine("🛠️ Tech Stack:");
+        addTerminalLine("🛠️ TECH STACK");
+        addTerminalLine("────────────────────────");
+
         addTerminalLine("Python");
         addTerminalLine("JavaScript");
         addTerminalLine("HTML / CSS");
@@ -182,15 +237,64 @@ terminalInput.addEventListener("keydown", (event) => {
 
     }
 
+
+    // =========================
+    // COMMAND: WHOAMI
+    // =========================
+
     else if (command === "whoami") {
 
         addTerminalLine("👤 BRUHH");
+        addTerminalLine("");
         addTerminalLine("🎓 Student Developer");
         addTerminalLine("🤖 AI Builder");
         addTerminalLine("🌐 Web Developer");
         addTerminalLine("⚡ Tech Explorer");
 
     }
+
+
+    // =========================
+    // COMMAND: INFO
+    // =========================
+
+    else if (command === "info") {
+
+        addTerminalLine("ℹ️ SYSTEM OVERVIEW");
+        addTerminalLine("────────────────────────");
+
+        addTerminalLine("Portfolio       🟢 ONLINE");
+        addTerminalLine("AI Chatbot      🟢 CONNECTED");
+        addTerminalLine("Email Assistant 🟢 ONLINE");
+        addTerminalLine("Developer Mode  🟢 ACTIVE");
+        addTerminalLine("Projects        6");
+        addTerminalLine("AI Systems      2+");
+
+    }
+
+
+    // =========================
+    // COMMAND: SYSTEM
+    // =========================
+
+    else if (command === "system") {
+
+        addTerminalLine("💻 SYSTEM INFORMATION");
+        addTerminalLine("────────────────────────");
+
+        addTerminalLine(`Browser: ${navigator.userAgent}`);
+        addTerminalLine(`Platform: ${navigator.platform}`);
+        addTerminalLine(`Language: ${navigator.language}`);
+        addTerminalLine(
+            `Screen: ${window.screen.width} × ${window.screen.height}`
+        );
+
+    }
+
+
+    // =========================
+    // COMMAND: TIME
+    // =========================
 
     else if (command === "time") {
 
@@ -199,42 +303,208 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine(`🕒 Current time: ${currentTime}`);
 
     }
-// =========================
-// OPEN COMMANDS
-// =========================
 
-else if (command === "open projects") {
 
-    addTerminalLine("📁 Opening projects...");
+    // =========================
+    // COMMAND: DATE
+    // =========================
 
-    document.querySelector(".portfolio-container")
-        .scrollIntoView({ behavior: "smooth" });
+    else if (command === "date") {
 
-}
+        const currentDate = new Date().toLocaleDateString();
 
-else if (command === "open chatbot") {
+        addTerminalLine(`📅 Current date: ${currentDate}`);
 
-    addTerminalLine("💬 Opening Portfolio AI Chatbot...");
+    }
 
-    developerTerminal.classList.remove("active");
-    document.body.classList.remove("developer-mode");
 
-    chatbotModal.classList.add("active");
+    // =========================
+    // COMMAND: UPTIME
+    // =========================
 
-    chatUserInput.focus();
+    else if (command === "uptime") {
 
-}
+        const launchDate = new Date("2026-01-01T00:00:00");
+        const now = new Date();
 
-else if (command === "open email") {
+        const difference = now - launchDate;
 
-    addTerminalLine("📬 Opening AI Email Assistant...");
+        const days = Math.floor(
+            difference / (1000 * 60 * 60 * 24)
+        );
 
-    window.open(
-        "https://email-agent-panel.onrender.com/",
-        "_blank"
-    );
+        addTerminalLine("⏱️ PORTFOLIO UPTIME");
+        addTerminalLine("────────────────────────");
+        addTerminalLine(`${days} days since developer system launch`);
 
-}
+    }
+
+
+    // =========================
+    // COMMAND: CONTACT
+    // =========================
+
+    else if (command === "contact") {
+
+        addTerminalLine("📡 CONTACT");
+        addTerminalLine("────────────────────────");
+
+        addTerminalLine("Check the Contact section of the portfolio.");
+        addTerminalLine("You can also use the Email Assistant.");
+
+    }
+
+
+    // =========================
+    // COMMAND: BANNER
+    // =========================
+
+    else if (command === "banner") {
+
+        addTerminalLine("");
+        addTerminalLine("██████╗ ██████╗ ██╗   ██╗██╗  ██╗");
+        addTerminalLine("██╔══██╗██╔══██╗██║   ██║██║  ██║");
+        addTerminalLine("██████╔╝██████╔╝██║   ██║███████║");
+        addTerminalLine("██╔══██╗██╔══██╗██║   ██║██╔══██║");
+        addTerminalLine("██████╔╝██║  ██║╚██████╔╝██║  ██║");
+        addTerminalLine("╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝");
+        addTerminalLine("");
+        addTerminalLine("AI BUILDER • WEB DEVELOPER • AUTOMATION");
+
+    }
+
+
+    // =========================
+    // COMMAND: DASHBOARD
+    // =========================
+
+    else if (command === "dashboard") {
+
+        addTerminalLine("");
+        addTerminalLine("╔══════════════════════════════╗");
+        addTerminalLine("║     BRUHH DEVELOPER SYSTEM   ║");
+        addTerminalLine("╠══════════════════════════════╣");
+        addTerminalLine("║ Portfolio       🟢 ONLINE     ║");
+        addTerminalLine("║ AI Chatbot      🟢 ONLINE     ║");
+        addTerminalLine("║ Email Agent     🟢 ONLINE     ║");
+        addTerminalLine("║ Projects        06            ║");
+        addTerminalLine("║ Developer Mode  🟢 ACTIVE     ║");
+        addTerminalLine("╚══════════════════════════════╝");
+        addTerminalLine("");
+
+    }
+
+
+    // =========================
+    // OPEN PROJECTS
+    // =========================
+
+    else if (command === "open projects") {
+
+        addTerminalLine("📁 Opening projects...");
+
+        const projectsSection =
+            document.querySelector(".portfolio-container");
+
+        if (projectsSection) {
+
+            projectsSection.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        } else {
+
+            addTerminalLine("❌ Projects section not found.");
+
+        }
+
+    }
+
+
+    // =========================
+    // OPEN CHATBOT
+    // =========================
+
+    else if (command === "open chatbot") {
+
+        addTerminalLine("💬 Opening Portfolio AI Chatbot...");
+
+        developerTerminal.classList.remove("active");
+
+        document.body.classList.remove("developer-mode");
+
+        chatbotModal.classList.add("active");
+
+        chatUserInput.focus();
+
+    }
+
+
+    // =========================
+    // OPEN EMAIL
+    // =========================
+
+    else if (command === "open email") {
+
+        addTerminalLine("📬 Opening AI Email Assistant...");
+
+        window.open(
+            "https://email-agent-panel.onrender.com/",
+            "_blank"
+        );
+
+    }
+
+
+    // =========================
+    // OPEN PORTFOLIO
+    // =========================
+
+    else if (command === "open portfolio") {
+
+        addTerminalLine("🌐 Returning to portfolio...");
+
+        setTimeout(() => {
+
+            developerTerminal.classList.remove("active");
+
+            document.body.classList.remove("developer-mode");
+
+        }, 300);
+
+    }
+
+
+    // =========================
+    // THEME DARK
+    // =========================
+
+    else if (command === "theme dark") {
+
+        document.body.classList.remove("light-mode");
+
+        themeToggle.textContent = "☀️ Light Mode";
+
+        addTerminalLine("🌙 Dark mode activated.");
+
+    }
+
+
+    // =========================
+    // THEME LIGHT
+    // =========================
+
+    else if (command === "theme light") {
+
+        document.body.classList.add("light-mode");
+
+        themeToggle.textContent = "🌙 Dark Mode";
+
+        addTerminalLine("☀️ Light mode activated.");
+
+    }
+
+
     // =========================
     // COMMAND: STATUS
     // =========================
@@ -277,7 +547,9 @@ else if (command === "open email") {
     }
 
 
-    // Scroll terminal down
+    // =========================
+    // SCROLL TERMINAL DOWN
+    // =========================
 
     terminalOutput.scrollTop =
         terminalOutput.scrollHeight;
@@ -299,15 +571,31 @@ function addTerminalLine(text) {
 
 }
 
-const chatBubbleButton = document.getElementById("ai-chat-bubble-button");
-const chatbotModal = document.getElementById("ai-chatbot-modal");
-const closeChatbot = document.getElementById("close-chatbot");
 
-const chatMessagesContainer = document.getElementById("chat-messages-container");
-const chatUserInput = document.getElementById("chat-user-input");
-const chatSendButton = document.getElementById("chat-send-btn");
+// =========================
+// CHATBOT ELEMENTS
+// =========================
 
-const emailAssistantButton = document.getElementById("email-assistant-button");
+const chatBubbleButton =
+    document.getElementById("ai-chat-bubble-button");
+
+const chatbotModal =
+    document.getElementById("ai-chatbot-modal");
+
+const closeChatbot =
+    document.getElementById("close-chatbot");
+
+const chatMessagesContainer =
+    document.getElementById("chat-messages-container");
+
+const chatUserInput =
+    document.getElementById("chat-user-input");
+
+const chatSendButton =
+    document.getElementById("chat-send-btn");
+
+const emailAssistantButton =
+    document.getElementById("email-assistant-button");
 
 
 // =========================
@@ -319,9 +607,13 @@ themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
 
     if (document.body.classList.contains("light-mode")) {
+
         themeToggle.textContent = "🌙 Dark Mode";
+
     } else {
+
         themeToggle.textContent = "☀️ Light Mode";
+
     }
 
 });
@@ -405,7 +697,11 @@ async function sendMessage() {
 
 
         if (!response.ok) {
-            throw new Error("Backend request failed.");
+
+            throw new Error(
+                "Backend request failed."
+            );
+
         }
 
 
@@ -448,12 +744,13 @@ async function sendMessage() {
 
 
 // =========================
-// ADD MESSAGE
+// ADD CHAT MESSAGE
 // =========================
 
 function addMessage(message, sender) {
 
-    const messageBubble = document.createElement("div");
+    const messageBubble =
+        document.createElement("div");
 
     messageBubble.classList.add(
         "chat-bubble",
@@ -462,18 +759,14 @@ function addMessage(message, sender) {
             : "assistant-bubble"
     );
 
-
     messageBubble.textContent = message;
-
 
     chatMessagesContainer.appendChild(
         messageBubble
     );
 
-
     chatMessagesContainer.scrollTop =
         chatMessagesContainer.scrollHeight;
-
 
     return messageBubble;
 
