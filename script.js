@@ -172,10 +172,11 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("[5] 📬 AI Email Assistant");
         addTerminalLine("[6] ☁️ Autonomous AI Social Media Pipeline");
         addTerminalLine("[7] 🚀 Project Showcase");
+        addTerminalLine("[8] 🌦️ Weather Dashboard");
 
 
         addTerminalLine("────────────────────────");
-        addTerminalLine("Total projects: 7");
+        addTerminalLine("Total projects: 8");
 
     }
 
@@ -269,7 +270,7 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("AI Chatbot      🟢 CONNECTED");
         addTerminalLine("Email Assistant 🟢 ONLINE");
         addTerminalLine("Developer Mode  🟢 ACTIVE");
-        addTerminalLine("Projects        7");
+        addTerminalLine("Projects        8");
         addTerminalLine("AI Systems      2+");
 
     }
@@ -389,7 +390,7 @@ terminalInput.addEventListener("keydown", (event) => {
         addTerminalLine("║ Portfolio       🟢 ONLINE     ║");
         addTerminalLine("║ AI Chatbot      🟢 ONLINE     ║");
         addTerminalLine("║ Email Agent     🟢 ONLINE     ║");
-        addTerminalLine("║ Projects        07            ║");
+        addTerminalLine("║ Projects        08            ║");
         addTerminalLine("║ Developer Mode  🟢 ACTIVE     ║");
         addTerminalLine("╚══════════════════════════════╝");
         addTerminalLine("");
